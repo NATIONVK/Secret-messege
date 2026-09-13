@@ -1,0 +1,1156 @@
+<html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Little Surprise For You ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --pink:#ff4fa3;
+    --purple:#9d5cff;
+    --light:#ffd5ec;
+    --glass:rgba(255,255,255,.09);
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    color:#fff;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%,#4a185d 0%,transparent 35%),
+      radial-gradient(circle at 90% 80%,#35155f 0%,transparent 35%),
+      linear-gradient(135deg,#080612,#16091f,#090611);
+}
+
+/* ---------------- STARS ---------------- */
+
+.stars,
+.stars:before,
+.stars:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.stars{
+    background-image:
+      radial-gradient(#fff 1px,transparent 1px),
+      radial-gradient(#fff 1px,transparent 1px);
+    background-size:70px 70px,110px 110px;
+    background-position:0 0,35px 45px;
+    opacity:.25;
+    animation:starsMove 20s linear infinite;
+}
+
+@keyframes starsMove{
+    from{transform:translateY(0)}
+    to{transform:translateY(70px)}
+}
+
+/* ---------------- PAGE ---------------- */
+
+.page{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    text-align:center;
+    z-index:5;
+}
+
+.page.active{
+    display:flex;
+    animation:pageEnter .75s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes pageEnter{
+    from{
+        opacity:0;
+        transform:scale(.88) translateY(35px);
+        filter:blur(8px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+        filter:blur(0);
+    }
+}
+
+.card{
+    width:min(540px,94vw);
+    max-height:88vh;
+    overflow:auto;
+    padding:35px 25px;
+    border-radius:32px;
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(22px);
+    box-shadow:
+      0 25px 80px rgba(0,0,0,.45),
+      inset 0 1px rgba(255,255,255,.12);
+}
+
+.card::-webkit-scrollbar{
+    width:3px;
+}
+
+.small{
+    font-size:.72rem;
+    letter-spacing:3px;
+    opacity:.55;
+    margin-bottom:14px;
+}
+
+h1{
+    font-size:clamp(2.2rem,10vw,4rem);
+    margin-bottom:18px;
+}
+
+h2{
+    font-size:clamp(1.6rem,7vw,2.5rem);
+    margin-bottom:18px;
+}
+
+p{
+    font-size:1.03rem;
+    line-height:1.85;
+    opacity:.9;
+}
+
+.highlight{
+    color:var(--light);
+    text-shadow:0 0 20px rgba(255,80,170,.7);
+}
+
+button{
+    border:0;
+    padding:14px 25px;
+    margin:12px 5px 0;
+    border-radius:50px;
+    color:white;
+    font-weight:700;
+    font-size:1rem;
+    cursor:pointer;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 10px 30px rgba(255,50,160,.25);
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+button:active{
+    transform:scale(.9);
+}
+
+.secondary{
+    background:rgba(255,255,255,.1);
+}
+
+.progress{
+    position:fixed;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:78%;
+    max-width:430px;
+    height:4px;
+    background:rgba(255,255,255,.12);
+    border-radius:20px;
+    z-index:100;
+}
+
+.bar{
+    height:100%;
+    width:6.66%;
+    background:linear-gradient(90deg,#ff4fa3,#b96cff);
+    border-radius:20px;
+    transition:.6s;
+}
+
+.counter{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    opacity:.4;
+    font-size:.7rem;
+    z-index:100;
+}
+
+/* ---------------- FLOATING HEARTS ---------------- */
+
+.float{
+    position:fixed;
+    pointer-events:none;
+    z-index:2;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(105vh) rotate(0) scale(.5);
+        opacity:0;
+    }
+    15%{opacity:.8}
+    100%{
+        transform:translateY(-15vh) rotate(360deg) scale(1.2);
+        opacity:0;
+    }
+}
+
+/* ---------------- GLOW ORB ---------------- */
+
+.orb{
+    width:100px;
+    height:100px;
+    margin:20px auto;
+    border-radius:50%;
+    background:radial-gradient(circle,#fff,#ff5cab 25%,#7d42ff 60%,transparent 72%);
+    filter:blur(1px);
+    animation:orb 2s infinite alternate;
+}
+
+@keyframes orb{
+    to{
+        transform:scale(1.25);
+        filter:drop-shadow(0 0 35px #ff4fa3);
+    }
+}
+
+/* ---------------- SECRET ---------------- */
+
+.secretIcon{
+    font-size:4rem;
+    margin:20px;
+    animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.18);
+        filter:drop-shadow(0 0 20px #ff4fa3);
+    }
+}
+
+/* ---------------- SURPRISE BOXES ---------------- */
+
+.boxGrid{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.sBox{
+    width:105px;
+    height:120px;
+    position:relative;
+    cursor:pointer;
+    perspective:500px;
+    transition:.3s;
+}
+
+.sBox:hover{
+    transform:translateY(-8px);
+}
+
+.boxBody{
+    position:absolute;
+    bottom:0;
+    left:5px;
+    width:95px;
+    height:78px;
+    border-radius:8px;
+    background:linear-gradient(135deg,#ff438f,#914eff);
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.boxBody:after{
+    content:"";
+    position:absolute;
+    left:39px;
+    top:0;
+    width:18px;
+    height:78px;
+    background:#ffd76b;
+}
+
+.boxLid{
+    position:absolute;
+    z-index:3;
+    left:0;
+    top:28px;
+    width:105px;
+    height:25px;
+    border-radius:6px;
+    background:linear-gradient(135deg,#ff75b7,#a964ff);
+    transform-origin:left bottom;
+    transition:1s;
+}
+
+.boxLid:after{
+    content:"";
+    position:absolute;
+    left:43px;
+    width:18px;
+    height:25px;
+    background:#ffd76b;
+}
+
+.sBox.open .boxLid{
+    transform:rotateX(-125deg) translateY(-25px);
+}
+
+.bow{
+    position:absolute;
+    top:0;
+    left:32px;
+    z-index:5;
+    font-size:30px;
+}
+
+.boxResult{
+    min-height:40px;
+    margin:15px 0;
+    color:#ffc2e2;
+    font-weight:600;
+}
+
+/* ---------------- HEART GAME ---------------- */
+
+.gameHeart{
+    width:100px;
+    height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:25px auto;
+    font-size:4rem;
+    cursor:pointer;
+    animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.25)}
+}
+
+/* ---------------- FAKE ENDING ---------------- */
+
+.fake{
+    font-size:4rem;
+    animation:shake 2s infinite;
+}
+
+@keyframes shake{
+    0%,100%{transform:rotate(0)}
+    20%{transform:rotate(-5deg)}
+    40%{transform:rotate(5deg)}
+}
+
+/* ---------------- FINAL GIFT ---------------- */
+
+.finalGift{
+    width:210px;
+    height:200px;
+    margin:25px auto;
+    position:relative;
+    cursor:pointer;
+    perspective:700px;
+}
+
+.gBody{
+    position:absolute;
+    width:175px;
+    height:115px;
+    left:17px;
+    bottom:0;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff438f,#914eff);
+    box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+.gBody:before{
+    content:"";
+    position:absolute;
+    left:72px;
+    width:32px;
+    height:115px;
+    background:#ffd86a;
+}
+
+.gLid{
+    position:absolute;
+    width:200px;
+    height:43px;
+    left:5px;
+    top:35px;
+    z-index:5;
+    border-radius:9px;
+    background:linear-gradient(135deg,#ff70b0,#ad5aff);
+    transform-origin:left bottom;
+    transition:1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.gLid:after{
+    content:"";
+    position:absolute;
+    left:84px;
+    width:32px;
+    height:43px;
+    background:#ffd86a;
+}
+
+.gBow{
+    position:absolute;
+    z-index:8;
+    left:72px;
+    top:0;
+    font-size:48px;
+}
+
+.finalGift.open .gLid{
+    transform:rotateX(-125deg) translateY(-35px);
+}
+
+.giftGlow{
+    position:absolute;
+    width:170px;
+    height:170px;
+    left:20px;
+    top:5px;
+    border-radius:50%;
+    background:#ff55aa;
+    filter:blur(45px);
+    opacity:0;
+    transition:1s;
+}
+
+.finalGift.open .giftGlow{
+    opacity:.8;
+}
+
+/* ---------------- LETTER ---------------- */
+
+.letter{
+    background:#fff8ee;
+    color:#402938;
+    text-align:left;
+    padding:28px;
+    border-radius:18px;
+    line-height:1.9;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    animation:letterOpen 1.2s ease;
+}
+
+@keyframes letterOpen{
+    from{
+        opacity:0;
+        transform:rotateX(-80deg) scale(.7);
+        transform-origin:top;
+    }
+    to{
+        opacity:1;
+        transform:rotateX(0) scale(1);
+    }
+}
+
+.letter h2{
+    text-align:center;
+    color:#bd3973;
+}
+
+.signature{
+    text-align:right;
+    margin-top:20px;
+    color:#a02d62;
+    font-weight:bold;
+}
+
+/* ---------------- CONFETTI ---------------- */
+
+.confetti{
+    position:fixed;
+    width:8px;
+    height:8px;
+    top:45%;
+    left:50%;
+    z-index:200;
+    pointer-events:none;
+    animation:confetti 1.8s ease-out forwards;
+}
+
+@keyframes confetti{
+    to{
+        transform:
+          translate(
+            calc((var(--x) - 50vw)*1.5),
+            calc((var(--y) - 50vh)*1.5)
+          )
+          rotate(720deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="progress">
+    <div class="bar" id="bar"></div>
+</div>
+
+<div class="counter" id="counter">1 / 15</div>
+
+<!-- PAGE 1 -->
+<section class="page active">
+<div class="card">
+<div class="small">PRIVATE SURPRISE</div>
+<div class="orb"></div>
+<h1>Hey, <span class="highlight">You</span> 👀</h1>
+<p>
+তোমার জন্য একটা ছোট্ট surprise বানিয়েছি।
+<br>
+কিন্তু একটা warning আছে...
+<br><br>
+<strong>শেষ পর্যন্ত গেলে আমাকে blame করতে পারবে না। 😌</strong>
+</p>
+<button onclick="next()">Enter ❤️</button>
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+<div class="card">
+<div class="small">DISTANCE</div>
+<h2>একটা ব্যাপার ভাবছিলাম... 🌍</h2>
+<p>
+আমাদের মাঝে distance আছে।
+<br><br>
+কিন্তু funny ব্যাপার হলো,
+কিছু মানুষ অনেক দূরে থেকেও
+কেমন যেন প্রতিদিনের কথার মাধ্যমে
+<strong class="highlight">কাছে চলে আসে।</strong>
+</p>
+<button onclick="next()">Hmm... 👀</button>
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+<div class="card">
+<div class="small">CONFESSION</div>
+<h2>একটা ছোট্ট confession 🙈</h2>
+<p>
+তোমার message আসলে
+আমি notification দেখেই একটু
+বেশি খুশি হয়ে যাই।
+<br><br>
+এটা কিন্তু আমার দোষ না...
+<strong class="highlight">তোমার দোষ। (সব দোষ তোমার)  😌</strong>
+</p>
+<button onclick="next()">Why me? 😏</button>
+</div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+<div class="card">
+<div class="small">QUESTION 01</div>
+<h2>আমি কি তোমাকে জ্বালাই? 😏</h2>
+
+<button onclick="q4(true)">হ্যাঁ 😑</button>
+<button class="secondary" onclick="q4(false)">না 😌</button>
+
+<p id="q4" class="boxResult"></p>
+
+<button onclick="next()">Next →</button>
+</div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+<div class="card">
+<div class="small">WARNING ⚠️</div>
+<h2>তোমার একটা সমস্যা আছে...</h2>
+
+<div class="secretIcon">🙈</div>
+
+<p>
+তুমি একটু বেশি cute।
+<br>
+আর আমি সেটা ignore করতে
+<strong class="highlight">পারছি না।</strong>
+</p>
+
+<button onclick="burst();next()">Okay okay 😂</button>
+</div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+<div class="card">
+<div class="small">QUESTION 02</div>
+<h2>তুমি কি আমার কথা মাঝে মাঝে ভাবো? 👀</h2>
+
+<button onclick="q6(true)">হুম 😌</button>
+<button class="secondary" onclick="q6(false)">একদম না 😒</button>
+
+<p id="q6" class="boxResult"></p>
+
+<button onclick="next()">Continue</button>
+</div>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page">
+<div class="card">
+<div class="small">SURPRISE BOX #1</div>
+<h2>একটা box তোমার জন্য 🎁</h2>
+
+<div class="boxGrid">
+<div class="sBox" onclick="openSmall(this,1)">
+<div class="bow">🎀</div>
+<div class="boxLid"></div>
+<div class="boxBody"></div>
+</div>
+</div>
+
+<p class="boxResult" id="result1">
+Box-এ tap করো...
+</p>
+
+<button onclick="next()">Next Surprise →</button>
+</div>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page">
+<div class="card">
+<div class="small">SURPRISE BOX #2</div>
+<h2>আরেকটা? 😏</h2>
+
+<div class="boxGrid">
+<div class="sBox" onclick="openSmall(this,2)">
+<div class="bow">🎀</div>
+<div class="boxLid"></div>
+<div class="boxBody"></div>
+</div>
+</div>
+
+<p class="boxResult" id="result2">
+এইটা খুললে কী বের হবে? 👀
+</p>
+
+<button onclick="next()">I want another →</button>
+</div>
+</section>
+
+<!-- PAGE 9 -->
+<section class="page">
+<div class="card">
+<div class="small">MINI CHALLENGE</div>
+<h2>৫টা ❤️ collect করো</h2>
+
+<p>তাড়াতাড়ি tap করো 😏</p>
+
+<div class="gameHeart" onclick="collect()">❤️</div>
+
+<p>
+Collected:
+<strong class="highlight">
+<span id="score">0</span> / 5
+</strong>
+</p>
+
+<button id="gameNext" style="display:none" onclick="next()">
+Challenge Complete ✨
+</button>
+</div>
+</section>
+
+<!-- PAGE 10 -->
+<section class="page">
+<div class="card">
+<div class="small">SURPRISE BOX #3</div>
+<h2>Last surprise box... maybe 👀</h2>
+
+<div class="boxGrid">
+<div class="sBox" onclick="openSmall(this,3)">
+<div class="bow">🎀</div>
+<div class="boxLid"></div>
+<div class="boxBody"></div>
+</div>
+</div>
+
+<p class="boxResult" id="result3">
+এবার একটু special...
+</p>
+
+<button onclick="next()">Continue</button>
+</div>
+</section>
+
+<!-- PAGE 11 -->
+<section class="page">
+<div class="card">
+<div class="small">SECRET UNLOCKED 🔐</div>
+<div class="secretIcon">💌</div>
+<h2>তুমি একটা secret unlock করেছো</h2>
+
+<p>
+আসলে এই পুরো website-এর
+সবচেয়ে important জিনিস
+কোনো animation না...
+<br><br>
+<strong class="highlight">
+তুমি নিজেই। ❤️
+</strong>
+</p>
+
+<button onclick="burst();next()">Awww 🥹</button>
+</div>
+</section>
+
+<!-- PAGE 12 -->
+<section class="page">
+<div class="card">
+<div class="small">WAIT...</div>
+<h2>এক মিনিট! 😳</h2>
+
+<div class="fake">😈</div>
+
+<p>
+ভাবছিলে এখানেই শেষ?
+<br><br>
+<strong class="highlight">Nope.</strong>
+<br>
+আমি এত সহজে শেষ করবো না। 😂
+</p>
+
+<button onclick="next()">There is more?!</button>
+</div>
+</section>
+
+<!-- PAGE 13 -->
+<section class="page">
+<div class="card">
+<div class="small">THE REAL SURPRISE</div>
+<h2>এবার সত্যি শেষের দিকে... 🎁</h2>
+
+<p>
+অনেকগুলো surprise-এর পর
+এবার একটা জিনিস আছে
+যেটা তুমি রেখে দিতে পারো।
+<br><br>
+<strong class="highlight">
+Open it slowly. ❤️
+</strong>
+</p>
+
+<button onclick="next()">Show me →</button>
+</div>
+</section>
+
+<!-- PAGE 14 -->
+<section class="page">
+<div class="card">
+<div class="small">FINAL GIFT</div>
+<h2>শুধু তোমার জন্য 🎁</h2>
+
+<div class="finalGift" id="finalGift" onclick="openFinalGift()">
+
+<div class="giftGlow"></div>
+
+<div class="gBow">🎀</div>
+
+<div class="gLid"></div>
+
+<div class="gBody"></div>
+
+</div>
+
+<p id="giftMessage">
+Gift box-এ tap করো...
+</p>
+
+<button id="letterButton" style="display:none" onclick="next()">
+Open the letter 💌
+</button>
+</div>
+</section>
+
+<!-- PAGE 15 -->
+<section class="page">
+<div class="card">
+
+<div class="small">FROM ME TO YOU</div>
+
+<div class="letter">
+
+<h2>প্রিয় তুমি ❤️</h2>
+
+<p>
+জানি, আমাদের মাঝে অনেকটা distance।
+একই জায়গায় নেই, ইচ্ছা করলেই দেখা করা যায় না,
+একসাথে বসে গল্প করাও সম্ভব হয় না।
+</p>
+
+<br>
+
+<p>
+তবুও কিছু মানুষ থাকে,
+যাদের সাথে দূরত্বটা খুব একটা
+দূরত্ব মনে হয় না।
+তুমি আমার কাছে ঠিক তেমনই একজন।
+</p>
+
+<br>
+
+<p>
+তোমাকে জ্বালাই, tease করি,
+মাঝে মাঝে বিরক্তও করি,
+কিন্তু সত্যি বলতে,
+তোমার সাথে কথা বলতে আমার
+<strong>ভালো লাগে।</strong> 😌
+</p>
+
+<br>
+
+<p>
+এই website-এর প্রতিটা page,
+প্রতিটা surprise,
+আর এই শেষের চিঠিটা,,,,
+সবকিছু বানানো হয়েছে
+তোমাকে একটু হাসানোর জন্য। ❤️
+</p>
+
+<br>
+
+<p>
+হয়তো distance আছে,
+কিন্তু ভালো একটা friendship-এর
+জন্য সবসময় কাছাকাছি থাকা লাগে না।
+কিছু মানুষ দূরে থেকেও
+মনের খুব কাছের হয়ে যায়।
+</p>
+
+<br>
+
+<p>
+তাই এই ছোট্ট gift-টা
+মনে রাখবে।
+আর হ্যাঁ...
+<br>
+<strong>
+আমাকে বেশি miss করলে কিন্তু
+দোষটা আমার না। 😏❤️
+</strong>
+</p>
+
+<p class="signature">
+ তোমার annoying friend 😌
+</p>
+
+</div>
+
+<button onclick="restart()">Replay 🔄</button>
+
+</div>
+</section>
+
+
+<script>
+
+/* ===============================
+   PAGE SYSTEM
+================================ */
+
+let current=0;
+
+const pages=document.querySelectorAll(".page");
+const bar=document.getElementById("bar");
+const counter=document.getElementById("counter");
+
+function showPage(i){
+
+    pages.forEach(p=>p.classList.remove("active"));
+
+    pages[i].classList.add("active");
+
+    bar.style.width=((i+1)/15*100)+"%";
+
+    counter.textContent=(i+1)+" / 15";
+
+    createFloatingHearts(5);
+}
+
+function next(){
+
+    if(current < pages.length-1){
+
+        current++;
+
+        showPage(current);
+
+    }
+}
+
+function restart(){
+
+    current=0;
+
+    document.getElementById("score").textContent=0;
+
+    showPage(0);
+}
+
+
+/* ===============================
+   QUESTIONS
+================================ */
+
+function q4(yes){
+
+    const e=document.getElementById("q4");
+
+    if(yes){
+
+        e.innerHTML=
+        "আমি জানতাম! 😌 এখন থেকে আরও একটু জ্বালাবো। 😂";
+
+    }else{
+
+        e.innerHTML=
+        "এই innocent face দেখে বিশ্বাস করবো? সন্দেহ আছে! 👀";
+
+    }
+}
+
+function q6(yes){
+
+    const e=document.getElementById("q6");
+
+    if(yes){
+
+        e.innerHTML=
+        "আচ্ছা... তাহলে দুজনেরই একই অবস্থা। 🙈❤️";
+
+    }else{
+
+        e.innerHTML=
+        "ঠিক আছে... আমি বিশ্বাস করলাম না। 😏";
+
+    }
+}
+
+
+/* ===============================
+   SMALL SURPRISE BOXES
+================================ */
+
+function openSmall(box,num){
+
+    if(box.classList.contains("open")) return;
+
+    box.classList.add("open");
+
+    let message="";
+
+    if(num===1){
+
+        message=
+        "🎀 Surprise #1: তুমি আমার favourite notification-গুলোর একটা। ❤️";
+
+    }
+
+    if(num===2){
+
+        message=
+        "🎀 Surprise #2: Distance তোমাকে দূরে রেখেছে, কিন্তু conversation না। 😌";
+
+    }
+
+    if(num===3){
+
+        message=
+        "🎀 Surprise #3: তোমাকে হাসাতে পারলে আমার mission successful। 🥹❤️";
+
+    }
+
+    document.getElementById("result"+num).innerHTML=message;
+
+    burst();
+
+}
+
+
+/* ===============================
+   HEART GAME
+================================ */
+
+let score=0;
+
+function collect(){
+
+    if(score>=5)return;
+
+    score++;
+
+    document.getElementById("score").textContent=score;
+
+    createFloatingHearts(8);
+
+    if(score===5){
+
+        burst();
+
+        document.getElementById("gameNext").style.display=
+        "inline-block";
+
+    }
+
+}
+
+
+/* ===============================
+   FINAL GIFT
+================================ */
+
+function openFinalGift(){
+
+    const gift=document.getElementById("finalGift");
+
+    if(gift.classList.contains("open")) return;
+
+    gift.classList.add("open");
+
+    burst();
+
+    document.getElementById("giftMessage").innerHTML=
+    "✨ Surprise unlocked! ✨";
+
+    setTimeout(()=>{
+
+        document.getElementById("letterButton").style.display=
+        "inline-block";
+
+    },1200);
+
+}
+
+
+/* ===============================
+   FLOATING HEARTS
+================================ */
+
+function createFloatingHeart(){
+
+    const h=document.createElement("div");
+
+    h.className="float";
+
+    const symbols=[
+        "❤️","💗","💕","💖",
+        "💜","✨","🌸","💫"
+    ];
+
+    h.innerHTML=
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.fontSize=
+    (12+Math.random()*25)+"px";
+
+    h.style.animationDuration=
+    (5+Math.random()*6)+"s";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),11000);
+
+}
+
+function createFloatingHearts(n){
+
+    for(let i=0;i<n;i++){
+
+        setTimeout(
+            createFloatingHeart,
+            i*130
+        );
+
+    }
+
+}
+
+setInterval(createFloatingHeart,1800);
+
+
+/* ===============================
+   HEART BURST
+================================ */
+
+function burst(){
+
+    for(let i=0;i<35;i++){
+
+        const c=document.createElement("div");
+
+        c.className="confetti";
+
+        c.innerHTML=
+        ["❤️","💖","💕","✨","💜","🌸"]
+        [Math.floor(Math.random()*6)];
+
+        c.style.setProperty(
+            "--x",
+            Math.random()*100+"vw"
+        );
+
+        c.style.setProperty(
+            "--y",
+            Math.random()*100+"vh"
+        );
+
+        c.style.fontSize=
+        (12+Math.random()*18)+"px";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>c.remove(),1900);
+
+    }
+
+}
+
+
+/* ===============================
+   START
+================================ */
+
+showPage(0);
+
+</script>
+
+</body>
+</html>
